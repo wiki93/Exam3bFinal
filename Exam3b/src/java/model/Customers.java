@@ -1,5 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package model;
 
+/**
+ *
+ * @author Dylan
+ */
 public class Customers {
 
     private int customerID;
@@ -7,11 +16,10 @@ public class Customers {
     private String lastName;
     private String addr1;
     private String addr2;
-    private String address;
     private String city;
     private String state;
     private int zipCode;
-    private String email;
+    private String emailAddr;
 
     public Customers() {
         this.customerID = 0;
@@ -19,24 +27,22 @@ public class Customers {
         this.lastName = "";
         this.addr1 = "";
         this.addr2 = "";
-        this.address = "";
         this.city = "";
         this.state = "";
         this.zipCode = 0;
-        this.email = "";
+        this.emailAddr = "";
     }
 
-    public Customers(int customerID, String firstName, String lastName, String addr1, String addr2, String address, String city, String state, int zipCode, String email) {
+    public Customers(int customerID, String firstName, String lastName, String addr1, String addr2, String city, String state, int zipCode, String emailAddr) {
         this.customerID = customerID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.addr1 = addr1;
         this.addr2 = addr2;
-        this.address = address;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
-        this.email = email;
+        this.emailAddr = emailAddr;
     }
 
     public int getCustomerID() {
@@ -79,14 +85,6 @@ public class Customers {
         this.addr2 = addr2;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getCity() {
         return city;
     }
@@ -111,19 +109,19 @@ public class Customers {
         this.zipCode = zipCode;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailAddr() {
+        return emailAddr;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailAddr(String emailAddr) {
+        this.emailAddr = emailAddr;
     }
 
     @Override
     public String toString() {
-        return "Customers{" + "customerID=" + customerID + ", firstName=" + firstName + ", lastName=" + lastName + ", addr1=" + addr1 + ", addr2=" + addr2 + ", address=" + address + ", city=" + city + ", state=" + state + ", zipCode=" + zipCode + ", email=" + email + '}';
+        return "Customers{" + "customerID=" + customerID + ", firstName=" + firstName + ", lastName=" + lastName + ", addr1=" + addr1 + ", addr2=" + addr2 + ", city=" + city + ", state=" + state + ", zipCode=" + zipCode + ", emailAddr=" + emailAddr + '}';
     }
 
-
-
+    
+    
 }
