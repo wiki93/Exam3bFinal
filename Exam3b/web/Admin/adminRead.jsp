@@ -14,7 +14,7 @@
 
             <%@ include file="../includes/adminHeader.jsp" %>
 
-            <%@ include file="../includes/adminMenu.jsp" %>
+            <%@ include file="../includes/adminReadMenu.jsp" %>
             
             <div class="row">
                 <div class="col-xs-12">

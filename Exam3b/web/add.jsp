@@ -14,29 +14,21 @@
 
         <div class="container">
 
+            <%@ include file="includes/adminHeader.jsp" %>
+
+            <%@ include file="includes/adminReadMenu.jsp" %>
+
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="page-header">
-                        <div>
-                            <h1>Add New Customer</h1>
-
-
-                        </div>
-                    </div>
+                    <h3>Add a New Customer as Admin</h3>
+                    All fields are required excecpt address line 2
                 </div>
             </div>
-
-
-            <%@ include file="includes/menu.jsp" %>
-
 
             <br>
             <div class="row">
                 <div class="col-xs-12">
                     <!-- content that takes all 12 cols -->
-                    <p>
-
-
                     <form name="addForm" action="addCustomers" method="get">
                         <table>
 
@@ -68,9 +60,9 @@
                             <tr>
 
                                 <td class = "right">
-                                    Address Line 2:  
+                                    Address Line 2(optional):  
                                 </td>
-                                <td class = "left"><input type="text" name="addr2" value="" size="50" required /> 
+                                <td class = "left"><input type="text" name="addr2" value="" size="50"/> 
                                 </td>
                             </tr>
                             <tr>
@@ -158,20 +150,15 @@
                             </tr>                            
 
                         </table>
-
-                        <br><br>
-                        <div class="span" style="padding-left:162px;">
-                            <input type="submit" value="Submit" id="submit"/>
-                        </div>
-                        <br><br>
-
+                        <input type="submit" value="Submit" id="submit"/>
                     </form>
                 </div>
             </div>
 
 
-            <%@ include file="includes/footer.jsp" %>
 
+            <br><br>
+            <%@ include file="includes/footer.jsp" %>
 
         </div>
 

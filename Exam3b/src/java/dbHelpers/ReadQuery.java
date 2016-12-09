@@ -95,9 +95,6 @@ public class ReadQuery {
             table += "<th>";
             table += "Email Address";
             table += "</th>";
-            table += "<th>";
-            table += "";
-            table += "</th>";
             table += "</tr>";
 
             while (this.results.next()) {
