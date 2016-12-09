@@ -19,19 +19,17 @@ import model.Customers;
 
 /**
  *
- * @author Dylan
+ * @author cassyfreedman
  */
 public class ReadRecord {
-    
+
     private Connection conn;
     private ResultSet results;
-    
     private Customers customer = new Customers();
     private int customerID;
-    
-    public ReadRecord (int customerID)
-    {
-        
+
+    public ReadRecord(int customerID) {
+
         Properties props = new Properties();
         InputStream instr = getClass().getResourceAsStream("dbConn.properties");
         try {
@@ -44,14 +42,14 @@ public class ReadRecord {
         } catch (IOException ex) {
             Logger.getLogger(ReadRecord.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         String driver = props.getProperty("driver.name");
         String url = props.getProperty("server.name");
         String username = props.getProperty("user.name");
         String passwd = props.getProperty("user.password");
-        
+
         this.customerID = customerID;
-        
+
         try {
             Class.forName(driver);
         } catch (ClassNotFoundException ex) {
@@ -63,21 +61,15 @@ public class ReadRecord {
             Logger.getLogger(ReadRecord.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void doRead() {
-    
+
         try {
-            //set up a string to hold our query
             String query = "SELECT * FROM customers WHERE customerID = ?";
-            //create a preparedstatement using our query string
             PreparedStatement ps = conn.prepareStatement(query);
-            //fill in the preparedstatement
             ps.setInt(1, customerID);
-            //execute the query
             this.results = ps.executeQuery();
-            
             this.results.next();
-            
             customer.setCustomerID(this.results.getInt("customerID"));
             customer.setFirstName(this.results.getString("firstName"));
             customer.setLastName(this.results.getString("lastName"));
@@ -85,16 +77,15 @@ public class ReadRecord {
             customer.setAddr2(this.results.getString("addr2"));
             customer.setCity(this.results.getString("city"));
             customer.setState(this.results.getString("state"));
-            customer.setZipCode(this.results.getInt("zipCode"));
+            customer.setZipCode(this.results.getString("zipCode"));
             customer.setEmailAddr(this.results.getString("emailAddr"));
         } catch (SQLException ex) {
             Logger.getLogger(ReadRecord.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
-        
+
     }
-    
-    public Customers getCustomer(){
+
+    public Customers getCustomer() {
         return this.customer;
     }
 }

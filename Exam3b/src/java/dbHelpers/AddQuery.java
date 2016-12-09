@@ -67,7 +67,7 @@ public class AddQuery {
             ps.setString(4, customers.getAddr2());
             ps.setString(5, customers.getCity());
             ps.setString(6, customers.getState());
-            ps.setInt(7, customers.getZipCode());
+            ps.setString(7, customers.getZipCode());
             ps.setString(8, customers.getEmailAddr());
             
             ps.executeUpdate();

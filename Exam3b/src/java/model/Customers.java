@@ -18,7 +18,7 @@ public class Customers {
     private String addr2;
     private String city;
     private String state;
-    private int zipCode;
+    private String zipCode;
     private String emailAddr;
 
     public Customers() {
@@ -29,11 +29,11 @@ public class Customers {
         this.addr2 = "";
         this.city = "";
         this.state = "";
-        this.zipCode = 0;
+        this.zipCode = "";
         this.emailAddr = "";
     }
 
-    public Customers(int customerID, String firstName, String lastName, String addr1, String addr2, String city, String state, int zipCode, String emailAddr) {
+    public Customers(int customerID, String firstName, String lastName, String addr1, String addr2, String city, String state, String zipCode, String emailAddr) {
         this.customerID = customerID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -101,11 +101,11 @@ public class Customers {
         this.state = state;
     }
 
-    public int getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(int zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 

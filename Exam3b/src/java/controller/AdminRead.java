@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controller;
 
-import dbHelpers.AddQuery;
+import dbHelpers.AdminReadQuery;
+import dbHelpers.ReadQuery;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -14,14 +11,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Customers;
 
 /**
  *
- * @author cassyfreedman
+ * @author dylan green
  */
-@WebServlet(name = "AddServlet", urlPatterns = {"/addCustomers"})
-public class AddServlet extends HttpServlet {
+@WebServlet(name = "AdminRead", urlPatterns = {"/adminRead"})
+public class AdminRead extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +36,10 @@ public class AddServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddServlet</title>");            
+            out.println("<title>Servlet Read</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Read at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,7 +57,8 @@ public class AddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doPost (request, response);
+        
+            doPost(request, response);
     }
 
     /**
@@ -76,48 +73,25 @@ public class AddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-        String addr1 = request.getParameter("addr1");
-        String addr2 = request.getParameter("addr2");
-        String city = request.getParameter("city");
-        String state = request.getParameter("state");
-        String zipCode = request.getParameter("zipCode");
-        String emailAddr = request.getParameter("emailAddr");
-        
-        Customers support = new Customers();
-        support.setFirstName(firstName);
-        support.setLastName(lastName);
-        support.setAddr1(addr1);
-        support.setAddr2(addr2);
-        support.setCity(city);
-        support.setState(state);
-        support.setZipCode(zipCode);
-        support.setEmailAddr(emailAddr);
-        
-        AddQuery aq = new AddQuery();
-        
-        aq.doAdd(support);
-        
-        //We will need to add a confirm page, rather than displaying the updated database
-        
-        String url = "index.jsp";
-        
-        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-        dispatcher.forward (request, response);
-        
-
+            AdminReadQuery rq = new AdminReadQuery();
+            
+            rq.doRead();
+            String table2 = rq.getHTMLTable();
+            
+            request.setAttribute("table2", table2);
+            String url = "./Admin/adminRead.jsp";
+            
+            RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+            dispatcher.forward(request, response);
+            
+            
+            
         
         
         
-       
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+
     @Override
     public String getServletInfo() {
         return "Short description";

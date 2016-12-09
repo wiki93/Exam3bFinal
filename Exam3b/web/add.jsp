@@ -26,7 +26,9 @@
                 </div>
             </div>
 
+
             <%@ include file="includes/menu.jsp" %>
+
 
             <br>
             <div class="row">
@@ -167,12 +169,9 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-xs-12">
-                    <!-- content that takes all 12 cols -->
-                    <%@ include file="includes/footer.jsp" %>
-                </div>
-            </div>
+
+            <%@ include file="includes/footer.jsp" %>
+
 
         </div>
 

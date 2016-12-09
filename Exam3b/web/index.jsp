@@ -22,14 +22,15 @@
                 <div class="col-xs-12">
                     <div class="page-header">
                         <div>
-                            <h1>Welcome to Dylans Exam 3b</h1>
+                            <h1>Welcome to Dylan's Exam 3b</h1>
                         </div>
                     </div>
                 </div>
             </div>
 
-
             <%@ include file="includes/menu.jsp" %>
+
+            
 
             <div class="row">
                 <div class="col-xs-12">
@@ -42,12 +43,9 @@
 
             </div>
 
-            <div class="row">
-                <div class="col-xs-12">
-                    <!-- content that takes all 12 cols -->
-                    <%@ include file="includes/footer.jsp" %>
-                </div>
-            </div>
+
+            <%@ include file="includes/footer.jsp" %>
+
 
 
         </div>

@@ -18,7 +18,7 @@ import model.Customers;
 
 /**
  *
- * @author Dylan
+ * @author cassyfreedman
  */
 @WebServlet(name = "UpdateFormServlet", urlPatterns = {"/update"})
 public class UpdateFormServlet extends HttpServlet {
@@ -61,8 +61,7 @@ public class UpdateFormServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-            doPost(request, response);
+        doPost (request, response);
     }
 
     /**
@@ -76,23 +75,15 @@ public class UpdateFormServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
-            //get the movieID
-            int customerID = Integer.parseInt(request.getParameter("customerID"));
-            
-            //create a ReadREcord class
-            ReadRecord rr = new ReadRecord(customerID);
-            //use ReadRecord to get the movie data
-            rr.doRead();
-            Customers movie = rr.getCustomer();
-            //pass movie and control to updateForm.jsp
-            request.setAttribute("customer", movie);
-            
-            String url = "/updateForm.jsp";
-            
-            RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-            dispatcher.forward(request, response);
+       
+        int customerID = Integer.parseInt(request.getParameter("customerID"));
+        ReadRecord rr = new ReadRecord (customerID);
+        rr.doRead();
+        Customers customer = rr.getCustomer();
+        request.setAttribute("customer", customer);
+        String url = "/updateForm.jsp";
+        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+        dispatcher.forward(request, response);
     }
 
     /**

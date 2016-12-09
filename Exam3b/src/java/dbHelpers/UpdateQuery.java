@@ -52,21 +52,22 @@ public class UpdateQuery {
         
     }
     
-    public void doUpdate(Customers movie){
+    public void doUpdate(Customers customer){
         
         try {
-            String query = "UPDATE customers SET firstName= ?, lastName = ?, addr1 = ?, addr2 = ?, city = ?, state = ?, zipCode = ?, emailAddr = ? WHERE movieID = ?";
+            String query = "UPDATE customers SET firstName= ?, lastName = ?, addr1 = ?, addr2 = ?, city = ?, state = ?, zipCode = ?, emailAddr = ? WHERE customerID = ?";
             
             PreparedStatement ps = conn.prepareStatement(query);
             
-            ps.setString(1, movie.getFirstName());
-            ps.setString(2, movie.getLastName());
-            ps.setString(3, movie.getAddr1());
-            ps.setString(4, movie.getAddr2());
-            ps.setString(5, movie.getCity());
-            ps.setString(6, movie.getState());
-            ps.setInt(7, movie.getZipCode());
-            ps.setString(8, movie.getEmailAddr());
+            ps.setString(1, customer.getFirstName());
+            ps.setString(2, customer.getLastName());
+            ps.setString(3, customer.getAddr1());
+            ps.setString(4, customer.getAddr2());
+            ps.setString(5, customer.getCity());
+            ps.setString(6, customer.getState());
+            ps.setString(7, customer.getZipCode());
+            ps.setString(8, customer.getEmailAddr());
+            ps.setInt(9, customer.getCustomerID());
             
             ps.executeUpdate();
         } catch (SQLException ex) {

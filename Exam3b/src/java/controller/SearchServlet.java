@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dbHelpers.AddQuery;
+import dbHelpers.SearchQuery;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -14,14 +14,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Customers;
 
 /**
  *
  * @author cassyfreedman
  */
-@WebServlet(name = "AddServlet", urlPatterns = {"/addCustomers"})
-public class AddServlet extends HttpServlet {
+@WebServlet(name = "SearchServlet", urlPatterns = {"/search"})
+public class SearchServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +39,10 @@ public class AddServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddServlet</title>");            
+            out.println("<title>Servlet SearchServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SearchServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,7 +60,7 @@ public class AddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doPost (request, response);
+        doPost(request, response);
     }
 
     /**
@@ -76,41 +75,18 @@ public class AddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-        String addr1 = request.getParameter("addr1");
-        String addr2 = request.getParameter("addr2");
-        String city = request.getParameter("city");
-        String state = request.getParameter("state");
-        String zipCode = request.getParameter("zipCode");
-        String emailAddr = request.getParameter("emailAddr");
-        
-        Customers support = new Customers();
-        support.setFirstName(firstName);
-        support.setLastName(lastName);
-        support.setAddr1(addr1);
-        support.setAddr2(addr2);
-        support.setCity(city);
-        support.setState(state);
-        support.setZipCode(zipCode);
-        support.setEmailAddr(emailAddr);
-        
-        AddQuery aq = new AddQuery();
-        
-        aq.doAdd(support);
-        
-        //We will need to add a confirm page, rather than displaying the updated database
-        
-        String url = "index.jsp";
-        
-        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-        dispatcher.forward (request, response);
-        
-
+            String name = request.getParameter("searchVal");
+            SearchQuery sq = new SearchQuery();
+            sq.doSearch(name);
+            String table = sq.getHTMLtable();
+            request.setAttribute("table", table);
+            String url = "/read.jsp";
+            
+            RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+            dispatcher.forward(request, response);
         
         
         
-       
     }
 
     /**
