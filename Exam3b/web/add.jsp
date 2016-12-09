@@ -167,7 +167,12 @@
                 </div>
             </div>
 
-            <%@ include file="includes/footer.jsp" %>
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- content that takes all 12 cols -->
+                    <%@ include file="includes/footer.jsp" %>
+                </div>
+            </div>
 
         </div>
 

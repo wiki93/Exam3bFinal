@@ -150,6 +150,10 @@ public class ReadQuery {
                 table += "<td>";
                 table += movie.getEmailAddr();
                 table += "</td>";
+                
+                table += "<td>";
+                table += "<a href=delete?customerID=" + movie.getCustomerID() + "> Delete </a>";
+                table += "</td>";
 
                 
 
